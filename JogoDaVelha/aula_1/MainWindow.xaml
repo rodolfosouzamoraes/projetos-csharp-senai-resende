@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aula_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="350" Background="White">
-    <Grid>
+        Title="MainWindow" Height="500" Width="350" Background="White"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Grid Background="#FFEEFCEE">
         <TextBlock HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Jogo da Velha" VerticalAlignment="Top" Height="50" Width="228" FontSize="22" FontFamily="Comic Sans MS" TextAlignment="Center" FontWeight="Bold" FontStyle="Normal">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -19,7 +22,7 @@
             </TextBlock.Foreground>
             <TextBlock.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="White" Offset="0.839"/>
+                    <GradientStop Color="Transparent" Offset="0.839"/>
                     <GradientStop Color="#FF00CEB7" Offset="1"/>
                     <GradientStop Color="#FF77E879" Offset="0.924"/>
                 </LinearGradientBrush>
@@ -34,8 +37,9 @@
         <Button x:Name="btnA3" Content="" HorizontalAlignment="Center" Margin="0,280,155,0" VerticalAlignment="Top" Height="73" Width="73" BorderBrush="#FF1A9E00" Background="#FFCCFFFB" Foreground="#FF05C34A" FontSize="48" Click="ButtonClick"/>
         <Button x:Name="btnB3" Content="" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="73" Width="73" BorderBrush="#FF1A9E00" Background="#FFCCFFFB" Foreground="#FF05C34A" FontSize="48" Click="ButtonClick"/>
         <Button x:Name="btnC3" Content="" HorizontalAlignment="Center" Margin="155,280,0,0" VerticalAlignment="Top" Height="73" Width="73"  BorderBrush="#FF1A9E00" Background="#FFCCFFFB" Foreground="#FF05C34A" FontSize="48" Click="ButtonClick"/>
-        <TextBlock x:Name="txtFraseGanhador" HorizontalAlignment="Center" Margin="0,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" TextAlignment="Center" Foreground="#FF33D99C" FontWeight="Bold"/>
-        <Button x:Name="btnNovoJogo" Content="Novo Jogo" HorizontalAlignment="Center" Margin="0,401,0,0" VerticalAlignment="Top" Width="128" Height="35" Background="#FF66FF61" Foreground="White" Click="NovoJogo"/>
+        <TextBlock x:Name="txtFraseGanhador" HorizontalAlignment="Center" Margin="0,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" TextAlignment="Center" Foreground="#FF33D99C" FontWeight="Bold"/>
+        <Button x:Name="btnNovoJogo" Content="Novo Jogo" HorizontalAlignment="Center" Margin="0,393,0,0" VerticalAlignment="Top" Width="128" Height="35" Background="#FF66FF61" Foreground="White" Click="NovoJogo"/>
+        <Button x:Name="btnSairDoJogo" Content="Sair" HorizontalAlignment="Center" Margin="0,442,0,0" VerticalAlignment="Top" Width="128" Height="35" Background="#FF66FF61" Foreground="White" Click="SairDoJogo"/>
 
     </Grid>
 </Window>

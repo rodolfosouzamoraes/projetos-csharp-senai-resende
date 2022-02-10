@@ -1,0 +1,55 @@
+﻿<Window x:Class="aula_1.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aula_1"
+        mc:Ignorable="d"
+        Title="Menu" Height="500" Width="350"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Grid Background="#FFEEFCEE">
+        <TextBlock HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" Text="Jogo da Velha" VerticalAlignment="Top" Height="50" Width="228" FontSize="22" FontFamily="Comic Sans MS" TextAlignment="Center" FontWeight="Bold" FontStyle="Normal">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF07ED00" Offset="0.418"/>
+                    <GradientStop Color="#FF049E93" Offset="1"/>
+                    <GradientStop Color="#FF05C34C" Offset="0.755"/>
+                    <GradientStop Color="#FF05C34C" Offset="0.61"/>
+                    <GradientStop Color="#FF05C34A" Offset="0.606"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Transparent" Offset="0.839"/>
+                    <GradientStop Color="#FF00CEB7" Offset="1"/>
+                    <GradientStop Color="#FF77E879" Offset="0.924"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
+        </TextBlock>
+        <Label Content="Nome do jogador X" HorizontalAlignment="Center" Margin="0,123,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#FF33D99C"/>
+        <TextBox x:Name="txtJogadorX" HorizontalAlignment="Center" Margin="0,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="14" Height="24" TextAlignment="Center" FontWeight="Normal" FontStyle="Normal" Background="{x:Null}">
+            <TextBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FF07ED00" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.892"/>
+                </LinearGradientBrush>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <Label Content="Nome do jogador O" HorizontalAlignment="Center" Margin="0,193,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#FF33D99C"/>
+        <TextBox x:Name="txtJogadorO" HorizontalAlignment="Center" Margin="0,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" FontSize="14" Height="24" TextAlignment="Center" FontWeight="Normal" FontStyle="Normal" Background="{x:Null}">
+            <TextBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FF07ED00" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.892"/>
+                </LinearGradientBrush>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <Button x:Name="btnJogar" Content="Jogar" HorizontalAlignment="Center" Margin="0,299,0,0" VerticalAlignment="Top" Width="132" Height="39" Background="#FF55DE51" BorderBrush="#FF1EA962" Foreground="White" Click="Jogar"/>
+        <Button x:Name="btnSair" Content="Sair" HorizontalAlignment="Center" Margin="0,348,0,0" VerticalAlignment="Top" Width="132" Height="39" Background="#FF55DE51" BorderBrush="#FF1EA962" Foreground="White" Click="Sair"/>
+        <TextBlock x:Name="txtAvisoDeErro" HorizontalAlignment="Center" Margin="0,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" TextAlignment="Center" Foreground="Red" FontSize="10"/>
+    </Grid>
+</Window>
