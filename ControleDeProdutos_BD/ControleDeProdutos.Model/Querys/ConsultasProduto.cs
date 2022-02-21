@@ -94,4 +94,34 @@ public class ConsultasProduto
         return foiInserido;
 
     }
+
+    public static bool ExluirProdutoPeloID(int id)
+    {
+        var conexao = new MySqlConnection(ConnectionBD.Connection.ConnectionString);
+        bool foiExcluido = false;
+
+        try
+        {
+            conexao.Open();
+            var comando = conexao.CreateCommand();
+            comando.CommandText = @"DELETE FROM Produto WHERE Id = @id;";
+            comando.Parameters.AddWithValue("@id", id);
+            var reader = comando.ExecuteReader();
+            foiExcluido=true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            if(conexao.State == System.Data.ConnectionState.Open)
+            {
+                conexao.Close();
+            }
+        }
+
+        return foiExcluido;
+
+    }
 }

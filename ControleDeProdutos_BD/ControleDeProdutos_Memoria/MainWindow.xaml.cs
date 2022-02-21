@@ -90,12 +90,12 @@ namespace ControleDeProdutos_Memoria
         /// </summary>
         private void PegarItemNoGrid(object sender, MouseButtonEventArgs e)
         {
-            /*Produto produto = (Produto)dgvProdutos.SelectedItem;
+            Produto produto = (Produto)dgvProdutos.SelectedItem;
             txtId.Text = ""+produto.Id;
             txtNome.Text = produto.Nome;
             txtQtd.Text = ""+produto.Qtd;
             txtDescricao.Text = produto.Descricao;
-            txtFabricante.Text = produto.Fabricante;*/
+            txtFabricante.Text = produto.Fabricante;
         }
 
         /// <summary>
@@ -106,17 +106,21 @@ namespace ControleDeProdutos_Memoria
             if(txtId.Text != "")
             {
                 int id = int.Parse(txtId.Text);
-                /*Produto produto = ObterProdutoPeloId(id);
-                if(produto != null)
+                MessageBoxResult message = MessageBox.Show($"Deseja excluir o produto?: {txtId.Text}", "Exlcuir Produto",MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if(message == MessageBoxResult.Yes)
                 {
-                    MessageBoxResult message = MessageBox.Show($"Deseja excluir o produto: {produto.Nome}?", "Excluir Produto", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                    if(message == MessageBoxResult.Yes)
+                    bool foiExcluido = cProduto.ExcluirProduto(id);
+                    if(foiExcluido == true) 
                     {
-                        listaProdutos.Remove(produto);
                         AtualizaDataGrid();
                         LimpaTodosCampos();
+                        MessageBoxResult messageError = MessageBox.Show($"O produto foi excluído com sucesso!", "Excluir Produto", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
-                }*/
+                    else
+                    {
+                        MessageBoxResult messageError = MessageBox.Show($"Ocorreu um erro, por favor, tente novamente mais tarde!","Excluir Produto", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
         }
 

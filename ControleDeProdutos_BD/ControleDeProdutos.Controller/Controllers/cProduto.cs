@@ -15,4 +15,9 @@ public  class cProduto
     {
         return ConsultasProduto.InserirProduto(nome, descricao, fabricante, quantidade);
     }
+
+    public static bool ExcluirProduto(int idProduto)
+    {
+        return ConsultasProduto.ExluirProdutoPeloID(idProduto);
+    }
 }
