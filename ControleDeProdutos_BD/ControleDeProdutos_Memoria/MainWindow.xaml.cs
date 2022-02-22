@@ -58,15 +58,7 @@ namespace ControleDeProdutos_Memoria
                 if(txtId.Text == "")
                 {
                     bool foiInserido = cProduto.NovoProduto(txtNome.Text, txtDescricao.Text, txtFabricante.Text, int.Parse(txtQtd.Text));
-                    if(foiInserido == true) {
-                        LimpaTodosCampos();
-                        AtualizaDataGrid();
-                    }
-                    else
-                    {
-                        MessageBoxResult message = MessageBox.Show("Ocorreu um erro, por favor tente novamente mais tarde!", "Erro ao inserir produto", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    
+                    InformaUsuario(foiInserido, "Produto inserido com sucesso!", "Erro ao inserir produto");
                 }
                 else
                 {
@@ -110,36 +102,10 @@ namespace ControleDeProdutos_Memoria
                 if(message == MessageBoxResult.Yes)
                 {
                     bool foiExcluido = cProduto.ExcluirProduto(id);
-                    if(foiExcluido == true) 
-                    {
-                        AtualizaDataGrid();
-                        LimpaTodosCampos();
-                        MessageBoxResult messageError = MessageBox.Show($"O produto foi excluído com sucesso!", "Excluir Produto", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        MessageBoxResult messageError = MessageBox.Show($"Ocorreu um erro, por favor, tente novamente mais tarde!","Excluir Produto", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                    InformaUsuario(foiExcluido, "O produto foi excluído com sucesso!", "Excluir Produto");
                 }
             }
         }
-
-        /// <summary>
-        /// Obtém o produto com base no id informado
-        /// </summary>
-        /// <param name="id">Id do produto</param>
-        /// <returns>O produto encontrado</returns>
-        /*private Produto ObterProdutoPeloId(int id)
-        {
-            foreach(Produto produto in listaProdutos)
-            {
-                if(produto.Id == id)
-                {
-                    return produto;
-                }
-            }
-            return new Produto();
-        }*/
 
         /// <summary>
         /// Método acionado pelo botão Atualizar
@@ -154,16 +120,7 @@ namespace ControleDeProdutos_Memoria
                 {
                     int quantidade = int.Parse(txtQtd.Text);
                     bool foiAlterado = cProduto.AtualizaProduto(id, txtNome.Text, txtDescricao.Text, txtFabricante.Text, quantidade);
-                    if (foiAlterado)
-                    {
-                        AtualizaDataGrid();
-                        LimpaTodosCampos();
-                        MessageBoxResult messageInformacao = MessageBox.Show("Produto atualizado com sucesso!", "Atualizar Produto", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        MessageBoxResult messageErro = MessageBox.Show("Ocorreu um erro, por favor, tente novamente mais tarde!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                    InformaUsuario(foiAlterado, "Produto atualizado com sucesso!", "Atualizar Produto");
                 }
             }
             else
@@ -178,6 +135,26 @@ namespace ControleDeProdutos_Memoria
         private void txtQtd_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+        }
+
+        /// <summary>
+        /// Informa ao usuário uma mensagem e atualiza os campos.
+        /// </summary>
+        /// <param name="foiVerdadeiro">Verifição positiva ou negativa</param>
+        /// <param name="mensagemInformativa">Mensagem informada pelo MessageBox</param>
+        /// <param name="tituloDaBox">Titulo da MessageBox</param>
+        private void InformaUsuario(bool foiVerdadeiro, string mensagemInformativa, string tituloDaBox)
+        {
+            if (foiVerdadeiro)
+            {
+                AtualizaDataGrid();
+                LimpaTodosCampos();
+                MessageBoxResult messageInformacao = MessageBox.Show(mensagemInformativa, tituloDaBox, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBoxResult messageErro = MessageBox.Show("Ocorreu um erro, por favor, tente novamente mais tarde!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
