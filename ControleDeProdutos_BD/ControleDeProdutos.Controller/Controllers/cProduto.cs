@@ -18,6 +18,11 @@ public  class cProduto
 
     public static bool ExcluirProduto(int idProduto)
     {
-        return ConsultasProduto.ExluirProdutoPeloID(idProduto);
+        return ConsultasProduto.ExluirProdutoID(idProduto);
+    }
+
+    public static bool AtualizaProduto(int idProduto, string nome, string descricao, string fabricante, int quantidade)
+    {
+        return ConsultasProduto.AtualizaProduto(idProduto, nome, descricao, fabricante, quantidade);
     }
 }

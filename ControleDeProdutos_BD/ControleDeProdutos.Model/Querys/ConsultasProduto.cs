@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySqlConnector;
+using System.Data;
 
 public class ConsultasProduto
 {
@@ -53,7 +54,7 @@ public class ConsultasProduto
             // Finzaliza após o try e catch
 
             //Verifica se a conexão está aberta com o banco de dados
-            if(conexao.State == System.Data.ConnectionState.Open)
+            if(conexao.State == ConnectionState.Open)
             {
                 conexao.Close();
             }
@@ -85,7 +86,7 @@ public class ConsultasProduto
         }
         finally
         {
-            if (conexao.State == System.Data.ConnectionState.Open)
+            if (conexao.State == ConnectionState.Open)
             {
                 conexao.Close();
             }
@@ -95,7 +96,7 @@ public class ConsultasProduto
 
     }
 
-    public static bool ExluirProdutoPeloID(int id)
+    public static bool ExluirProdutoID(int id)
     {
         var conexao = new MySqlConnection(ConnectionBD.Connection.ConnectionString);
         bool foiExcluido = false;
@@ -115,7 +116,7 @@ public class ConsultasProduto
         }
         finally
         {
-            if(conexao.State == System.Data.ConnectionState.Open)
+            if(conexao.State == ConnectionState.Open)
             {
                 conexao.Close();
             }
@@ -123,5 +124,38 @@ public class ConsultasProduto
 
         return foiExcluido;
 
+    }
+
+    public static bool AtualizaProduto(int id, string nome, string descricao, string fabricante, int quantidade)
+    {
+        var conexao = new MySqlConnection(ConnectionBD.Connection.ConnectionString);
+        bool foiAlterado = false;
+
+        try
+        {
+            conexao.Open();
+            var comando = conexao.CreateCommand();
+            comando.CommandText = @"UPDATE Produto SET Nome = @nome, Descricao = @descricao, Fabricante = @fabricante, Quantidade = @quantidade WHERE Id = @id;";
+            comando.Parameters.AddWithValue("@id", id);
+            comando.Parameters.AddWithValue("@nome", nome);
+            comando.Parameters.AddWithValue("@descricao", descricao);
+            comando.Parameters.AddWithValue("@fabricante", fabricante);
+            comando.Parameters.AddWithValue("@quantidade", quantidade);
+            var reader = comando.ExecuteReader();
+            foiAlterado = true;
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            if(conexao.State == ConnectionState.Open)
+            {
+                conexao.Close();
+            }
+        }
+
+        return foiAlterado;
     }
 }

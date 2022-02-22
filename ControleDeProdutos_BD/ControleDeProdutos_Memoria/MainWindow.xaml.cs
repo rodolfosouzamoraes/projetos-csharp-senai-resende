@@ -148,24 +148,23 @@ namespace ControleDeProdutos_Memoria
         {
             if(txtId.Text != "")
             {
-                /*Produto produtoAtualizado = new Produto();
-                produtoAtualizado.Id = int.Parse(txtId.Text);
-                produtoAtualizado.Nome = txtNome.Text;
-                produtoAtualizado.Descricao = txtDescricao.Text;
-                produtoAtualizado.Qtd = int.Parse(txtQtd.Text);
-                produtoAtualizado.Fabricante = txtFabricante.Text;
-
-                for(int i = 0; i < listaProdutos.Count; i++)
+                int id = int.Parse(txtId.Text);
+                MessageBoxResult message = MessageBox.Show($"Deseja atualizar o produto?: {txtId.Text}", "Atualizar Produto", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (message == MessageBoxResult.Yes)
                 {
-                    if (listaProdutos[i].Id == produtoAtualizado.Id)
+                    int quantidade = int.Parse(txtQtd.Text);
+                    bool foiAlterado = cProduto.AtualizaProduto(id, txtNome.Text, txtDescricao.Text, txtFabricante.Text, quantidade);
+                    if (foiAlterado)
                     {
-                        listaProdutos[i] = produtoAtualizado;
-                        break;
+                        AtualizaDataGrid();
+                        LimpaTodosCampos();
+                        MessageBoxResult messageInformacao = MessageBox.Show("Produto atualizado com sucesso!", "Atualizar Produto", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBoxResult messageErro = MessageBox.Show("Ocorreu um erro, por favor, tente novamente mais tarde!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-
-                AtualizaDataGrid();*/
-                
             }
             else
             {
