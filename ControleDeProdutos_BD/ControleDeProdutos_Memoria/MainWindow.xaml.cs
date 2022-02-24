@@ -9,18 +9,28 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Text.RegularExpressions;
+using ControleDeProdutos.View;
 
-namespace ControleDeProdutos_Memoria
+namespace ControleDeProdutos_View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        TelaLogin telaLogin;
+        Usuario usuario;
+        public MainWindow(Usuario _usuario, TelaLogin _telaLogin)
         {
             InitializeComponent();
             AtualizaDataGrid();
+            telaLogin = _telaLogin;
+            usuario = _usuario;
+            if(usuario.Perfil == "COM")
+            {
+                btnAtualizar.Visibility = Visibility.Hidden;
+                btnExcluir.Visibility = Visibility.Hidden;
+            }
         }
 
         /// <summary>
@@ -82,12 +92,15 @@ namespace ControleDeProdutos_Memoria
         /// </summary>
         private void PegarItemNoGrid(object sender, MouseButtonEventArgs e)
         {
-            Produto produto = (Produto)dgvProdutos.SelectedItem;
-            txtId.Text = ""+produto.Id;
-            txtNome.Text = produto.Nome;
-            txtQtd.Text = ""+produto.Qtd;
-            txtDescricao.Text = produto.Descricao;
-            txtFabricante.Text = produto.Fabricante;
+            if(usuario.Perfil == "ADM")
+            {
+                Produto produto = (Produto)dgvProdutos.SelectedItem;
+                txtId.Text = "" + produto.Id;
+                txtNome.Text = produto.Nome;
+                txtQtd.Text = "" + produto.Qtd;
+                txtDescricao.Text = produto.Descricao;
+                txtFabricante.Text = produto.Fabricante;
+            }            
         }
 
         /// <summary>
@@ -155,6 +168,12 @@ namespace ControleDeProdutos_Memoria
             {
                 MessageBoxResult messageErro = MessageBox.Show("Ocorreu um erro, por favor, tente novamente mais tarde!", "Atenção", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void Sair(object sender, RoutedEventArgs e)
+        {
+            telaLogin.Show();
+            Close();
         }
     }
 }

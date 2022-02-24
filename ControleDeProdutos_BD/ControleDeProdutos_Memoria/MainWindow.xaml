@@ -1,9 +1,9 @@
-﻿<Window x:Class="ControleDeProdutos_Memoria.MainWindow"
+﻿<Window x:Class="ControleDeProdutos_View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ControleDeProdutos_Memoria"
+        xmlns:local="clr-namespace:ControleDeProdutos_View"
         mc:Ignorable="d"
         Title="MainWindow" Height="296" Width="800"
         ResizeMode="NoResize"
@@ -24,7 +24,7 @@
         <Button x:Name="btnAtualizar" Content="Atualizar" HorizontalAlignment="Left" Margin="75,231,0,0" VerticalAlignment="Top" Width="60" Click="AtualizarProduto"/>
         <Button x:Name="btnExcluir" Content="Excluir" HorizontalAlignment="Left" Margin="140,231,0,0" VerticalAlignment="Top" Width="60" Click="ExcluirProduto"/>
         <Button x:Name="btnLimpar" Content="Limpar" HorizontalAlignment="Left" Margin="205,231,0,0" VerticalAlignment="Top" Width="60" Click="LimparCampos"/>
-        <DataGrid x:Name="dgvProdutos" HorizontalAlignment="Left" Width="530" Margin="270,0,0,0" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="PegarItemNoGrid">
+        <DataGrid x:Name="dgvProdutos" HorizontalAlignment="Left" Width="530" Margin="270,30,0,0" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="PegarItemNoGrid">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
                 <DataGridTextColumn Binding="{Binding Nome}" Header="Nome"/>
@@ -33,6 +33,7 @@
                 <DataGridTextColumn Binding="{Binding Descricao}" Header="Descrição"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="btnSair" Content="Sair" HorizontalAlignment="Right" Margin="0,5,10,0" VerticalAlignment="Top" Width="49" Click="Sair"/>
 
     </Grid>
 </Window>
