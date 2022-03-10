@@ -15,7 +15,7 @@ public class ConnectionBD
                 Server = "127.0.0.1",
                 UserID = "root",
                 Password = "",
-                Database = "bancoAula6"
+                Database = "bancoaula"
             };
         }
 

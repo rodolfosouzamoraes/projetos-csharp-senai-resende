@@ -55,5 +55,12 @@ namespace ControleDeProdutos.View
             txtLogin.Text = "";
             txtSenha.Password = "";
         }
+
+        private void AbrirTelaDeCadastro(object sender, MouseButtonEventArgs e)
+        {
+            CadastrarUsuario janelaCadastroUsuario = new CadastrarUsuario();
+            janelaCadastroUsuario.Show();
+            Close();
+        }
     }
 }

@@ -1,16 +1,16 @@
-﻿<Window x:Class="ControleDeProdutos.View.TelaLogin"
+﻿<Window x:Class="ControleDeProdutos.View.CadastrarUsuario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeProdutos.View"
         mc:Ignorable="d"
-        Title="TelaLogin" Height="450" Width="306"
+        Title="CadastrarUsuario" Height="450" Width="306"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="0,27,0,0" TextWrapping="Wrap" Text="Faça o seu Login." VerticalAlignment="Top" FontSize="24" Foreground="#FF00A0E4"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,91,0,0" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" FontSize="16" Width="180"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,27,0,0" TextWrapping="Wrap" Text="Cadastro de Usuário" VerticalAlignment="Top" FontSize="24" Foreground="#FF00A0E4"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,91,0,0" TextWrapping="Wrap" Text="Informe seu login:" VerticalAlignment="Top" FontSize="16" Width="180"/>
         <TextBox x:Name="txtLogin" HorizontalAlignment="Center" Margin="0,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="16" Background="#FFD6F3FF">
             <TextBox.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -29,8 +29,8 @@
                 </LinearGradientBrush>
             </TextBox.BorderBrush>
         </TextBox>
-        <TextBlock HorizontalAlignment="Center" Margin="0,158,0,0" TextWrapping="Wrap" Text="Senha:" VerticalAlignment="Top" FontSize="16" Width="181"/>
-        <Button x:Name="btnEntrar" Content="Entrar" HorizontalAlignment="Center" Margin="0,247,0,0" VerticalAlignment="Top" Height="32" Width="182" FontSize="16" BorderBrush="#FF00ABEB" Foreground="White" Click="Entrar">
+        <TextBlock HorizontalAlignment="Center" Margin="0,158,0,0" TextWrapping="Wrap" Text="Informe sua Senha:" VerticalAlignment="Top" FontSize="16" Width="181"/>
+        <Button x:Name="btnCadastrar" Content="Cadastrar" HorizontalAlignment="Center" Margin="0,323,0,0" VerticalAlignment="Top" Height="32" Width="182" FontSize="16" BorderBrush="#FF00ABEB" Foreground="White" Click="CadastrarNovoUsuario">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFB5E9FF"/>
@@ -57,7 +57,25 @@
                 </LinearGradientBrush>
             </PasswordBox.BorderBrush>
         </PasswordBox>
-        <TextBlock x:Name="txtCadastrarNovoUsuario" HorizontalAlignment="Center" Margin="0,308,0,0" TextWrapping="Wrap" Text="Não tem conta? Cadastre-se!" VerticalAlignment="Top" FontSize="14" Foreground="#FF00A0E4" MouseDown="AbrirTelaDeCadastro"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,224,0,0" TextWrapping="Wrap" Text="Confirme sua Senha:" VerticalAlignment="Top" FontSize="16" Width="181"/>
+        <PasswordBox x:Name="txtConfirmaSenha" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Width="181" FontSize="16" Background="#FFD6F3FF" PasswordChar="*" MaxLength="10">
+            <PasswordBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>
+                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFD6F3FF" Offset="0.34"/>
+                    <GradientStop Color="#FF0087BF" Offset="0.987"/>
+                    <GradientStop Color="#FF9ED7EE" Offset="0.507"/>
+                    <GradientStop Color="#FF9ED7EE" Offset="0.663"/>
+                </LinearGradientBrush>
+            </PasswordBox.BorderBrush>
+        </PasswordBox>
 
     </Grid>
 </Window>

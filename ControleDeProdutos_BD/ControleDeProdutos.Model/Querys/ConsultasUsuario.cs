@@ -12,14 +12,14 @@ public class ConsultasUsuario
     {
         var conexao = new MySqlConnection(ConnectionBD.Connection.ConnectionString);
         Usuario usuario = null;
-
+        string senhaCriptografada = CriptografiaMD5.CriptografarSenha(senha);
         try
         {
             conexao.Open();
             var comando = conexao.CreateCommand();
             comando.CommandText = @"SELECT * FROM Usuario WHERE login = @login AND senha = @senha;";
             comando.Parameters.AddWithValue("@login", login);
-            comando.Parameters.AddWithValue("@senha", senha);
+            comando.Parameters.AddWithValue("@senha", senhaCriptografada);
             var leitura = comando.ExecuteReader();
             while (leitura.Read())
             {
@@ -45,5 +45,36 @@ public class ConsultasUsuario
         }
 
         return usuario;
+    }
+
+    public static bool NovoUsuario(string login, string senha)
+    {
+        var conexao = new MySqlConnection(ConnectionBD.Connection.ConnectionString);
+        bool foiInserido = false;
+        string senhaCriptografada = CriptografiaMD5.CriptografarSenha(senha);
+        try
+        {
+            conexao.Open();
+            var comando = conexao.CreateCommand();
+            comando.CommandText = @"Insert Into Usuario (login, senha, perfil) values (@login, @senha, @perfil)";
+            comando.Parameters.AddWithValue("@login", login);
+            comando.Parameters.AddWithValue("@senha", senhaCriptografada);
+            comando.Parameters.AddWithValue("@perfil", "Comum");
+            var leitura = comando.ExecuteReader();
+            foiInserido = true;
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine (ex.Message);
+        }
+        finally
+        {
+            if(conexao.State == ConnectionState.Open)
+            {
+                conexao.Close();
+            }
+        }
+
+        return foiInserido;
     }
 }

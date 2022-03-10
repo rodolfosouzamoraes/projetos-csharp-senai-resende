@@ -10,4 +10,9 @@ public class cUsuario
     {
         return ConsultasUsuario.ObterUsuarioPeloLoginSenha(login,senha);
     }
+
+    public static bool NovoUsuario(string login, string senha)
+    {
+        return ConsultasUsuario.NovoUsuario(login,senha);
+    }
 }
