@@ -5,7 +5,12 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>box.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="box.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ControleDeProdutos.Controller\ControleDeProdutos.Controller.csproj" />

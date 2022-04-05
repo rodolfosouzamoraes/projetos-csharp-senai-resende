@@ -37,7 +37,7 @@ namespace aula_1
         {
             LimpaCampos();
             MainWindow janelaJogo = new MainWindow(nomeJogadorX, nomeJogadorO, this);
-            janelaJogo.Show(); // Exibe a tela do jogo
+            janelaJogo.Show();
             Hide(); // Esconde a tela de menu
         }
 
@@ -50,7 +50,7 @@ namespace aula_1
 
         private void Sair(object sender, RoutedEventArgs e)
         {
-            Close(); // Fecha a tela
+            Close(); 
         }
     }
 }
